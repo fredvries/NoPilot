@@ -2,11 +2,11 @@
 setlocal EnableDelayedExpansion
 
 echo.
-echo NoPilot 1.0
-echo Microsoft Copilot removal / heavy disabling script (2025-2026 edition)
+echo NoPilot 1.1
+echo Microsoft Copilot removal, heavy disabling script (2025-2026 edition)
 echo ---------------------------------------------------------------
-echo This script mostly HIDES and strongly limits Copilot.
-echo Complete removal is no longer possible on 24H2 / 25H2.
+echo NoPilot mostly HIDES and strongly limits Copilot.
+echo Complete removal is no longer possible on Windows 24H2 and 25H2.
 echo.
 
 net session >nul 2>&1
@@ -23,7 +23,7 @@ echo [2/5] Disabling Copilot as Windows Search box replacement
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v BingSearchEnabled /t REG_DWORD /d 0 /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\Search" /v IsDynamicHighlightEnabled /t REG_DWORD /d 0 /f >nul 2>&1
 
-echo [3/5] Trying to remove the Copilot App (works sometimes / comes back sometimes)
+echo [3/5] Trying to remove the Copilot App (works sometimes, comes back sometimes)
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
     "Get-AppxPackage *Microsoft.Copilot* -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue;" ^
     "Get-AppxPackage *Microsoft.Windows.Copilot* -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue;" ^
@@ -44,7 +44,7 @@ echo Most visible parts of Copilot should now be gone.
 echo A small service/webview stub might still exist and might be re-enabled by:
 echo * Windows Update
 echo * Microsoft Edge update
-echo * Insider builds / feature updates
+echo * Insider builds and feature updates
 echo.
 echo You will most likely need to re-run this script after major Windows updates.
 echo.
