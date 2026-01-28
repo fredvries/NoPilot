@@ -13,3 +13,11 @@ Users report that Copilot can act stubborn, refusing to acknowledge valid user a
 Overall, the sentiment is that Copilot is often seen as an unnecessary, premature addition that prioritizes marketing hype over user-centric design.
 
 Now there is NoPilot.
+
+Instructions:
+- Download the batchfile to your Desktop
+- Run as an Administrator (Right-click > 'Run as admin')
+
+Changelog:
+- [28dec25] version 1.0: Initial release
+
