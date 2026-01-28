@@ -22,5 +22,5 @@ Instructions:
 
 Changelog:
 - [28jan26] version 1.1: Made some small textual changes to script
-- [28dec26] version 1.0: Initial release
+- [28jan26] version 1.0: Initial release
 
