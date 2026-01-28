@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 echo.
-echo NoPilot 1.1
+echo NoPilot 1.0
 echo Microsoft Copilot removal, heavy disabling script (2025-2026 edition)
 echo ---------------------------------------------------------------
 echo NoPilot mostly HIDES and strongly limits Copilot.
@@ -44,7 +44,8 @@ echo Most visible parts of Copilot should now be gone.
 echo A small service/webview stub might still exist and might be re-enabled by:
 echo * Windows Update
 echo * Microsoft Edge update
-echo * Insider builds and feature updates
+echo * Insider builds
+echo * Feature updates
 echo.
 echo You will most likely need to re-run this script after major Windows updates.
 echo.
