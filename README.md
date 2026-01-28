@@ -1,4 +1,4 @@
-NoPilot 1.0
+NoPilot 1.1
 
 Microsoft Copilot is almost universally disliked due to its forced integration across Windows and Office, which many users find intrusive, distracting, and a disruption to established workflows. 
 
@@ -21,5 +21,6 @@ Instructions:
 - Run as an Administrator (Right-click > 'Run as admin')
 
 Changelog:
+- [28jan26] version 1.1: Made some small textual changes to script
 - [28dec25] version 1.0: Initial release
 
