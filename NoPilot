@@ -1,0 +1,51 @@
+@echo off
+setlocal EnableDelayedExpansion
+
+echo.
+echo NoPilot 1.0
+echo Microsoft Copilot removal / heavy disabling script (2025-2026 edition)
+echo ---------------------------------------------------------------
+echo This script mostly HIDES and strongly limits Copilot.
+echo Complete removal is no longer possible on 24H2 / 25H2.
+echo.
+
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo This script must be run as Administrator.
+    echo Right-click --> Run as administrator
+    pause & exit /b 1
+)
+
+echo [1/5] Removing Copilot from taskbar (most important step)
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowCopilotButton /t REG_DWORD /d 0 /f >nul 2>&1
+
+echo [2/5] Disabling Copilot as Windows Search box replacement
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v BingSearchEnabled /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\Search" /v IsDynamicHighlightEnabled /t REG_DWORD /d 0 /f >nul 2>&1
+
+echo [3/5] Trying to remove the Copilot App (works sometimes / comes back sometimes)
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+    "Get-AppxPackage *Microsoft.Copilot* -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue;" ^
+    "Get-AppxPackage *Microsoft.Windows.Copilot* -AllUsers | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue;" ^
+    "Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like '*Copilot*' | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue" >nul 2>&1
+
+echo [4/5] Blocking Copilot via Windows Firewall (helps against background connections)
+netsh advfirewall firewall add rule name="Block Copilot Telemetry & Update" dir=out action=block remoteip=20.236.156.0/25,20.236.157.0/25,20.236.158.0/25,52.114.132.0/22 enable=yes >nul 2>&1
+
+echo [5/5] Disabling Copilot via Edge policy (prevents web-based fallback)
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v HubContentRotation /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v HubContentRotationStatic /t REG_DWORD /d 0 /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v HubsSidebarEnabled /t REG_DWORD /d 0 /f >nul 2>&1
+
+echo.
+echo Done.
+echo.
+echo Most visible parts of Copilot should now be gone.
+echo A small service/webview stub might still exist and might be re-enabled by:
+echo * Windows Update
+echo * Microsoft Edge update
+echo * Insider builds / feature updates
+echo.
+echo You will most likely need to re-run this script after major Windows updates.
+echo.
+pause
