@@ -14,7 +14,7 @@ Overall, the sentiment is that Copilot is often seen as an unnecessary, prematur
 
 Now there is NoPilot.
 
-NoPilot mostly hides CoPilot as complete removal is no longer possible. Some visible parts are removed, blocked, or disabled by NoPilot.
+NoPilot mostly hides CoPilot as complete removal is no longer possible. Some visible parts are removed, others are blocked or disabled by NoPilot.
 
 Instructions:
 - Download the batchfile to your Desktop
