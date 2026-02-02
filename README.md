@@ -21,6 +21,6 @@ Instructions:
 - Run as an Administrator (Right-click > 'Run as admin')
 
 Changelog:
-- [02feb26] version 1.1: Added several new way of countering Copilot
+- [02feb26] version 1.1: Added several new ways of countering Copilot
 - [28jan26] version 1.0: Initial release
 
