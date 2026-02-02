@@ -1,4 +1,4 @@
-NoPilot 1.0
+NoPilot 1.1
 
 Microsoft Copilot is almost universally disliked due to its forced integration across Windows and Office, which many users find intrusive, distracting, and a disruption to established workflows. 
 
